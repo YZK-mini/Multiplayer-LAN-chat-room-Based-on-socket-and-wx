@@ -9,6 +9,8 @@ import wx.xrc
 class main(wx.Frame):
 
     def __init__(self, parent):
+
+        # 创建main窗口，设置相关参数
         wx.Frame.__init__(self, parent, id=wx.ID_ANY, title=u"聊天界面", pos=wx.DefaultPosition, size=wx.Size(685, 570),
                           style=wx.DEFAULT_FRAME_STYLE | wx.TAB_TRAVERSAL)
         self.SetWindowStyle(self.GetWindowStyle() & ~wx.RESIZE_BORDER)
@@ -18,12 +20,14 @@ class main(wx.Frame):
         fgSizer1.SetFlexibleDirection(wx.BOTH)
         fgSizer1.SetNonFlexibleGrowMode(wx.FLEX_GROWMODE_SPECIFIED)
 
+        # 聊天信息框
         self.msg_box = wx.TextCtrl(self, wx.ID_ANY, pos=wx.DefaultPosition, size=wx.Size(500, 400),
                                    style=wx.TE_READONLY | wx.TE_MULTILINE)
         fgSizer1.Add(self.msg_box, 0, wx.ALL, 5)
 
         bSizer3 = wx.BoxSizer(wx.VERTICAL)
 
+        # 用户列表显示框
         self.m_button4 = wx.Button(self, wx.ID_ANY, u"用户列表", wx.DefaultPosition, wx.Size(150, -1), 0)
         bSizer3.Add(self.m_button4, 0, wx.TOP | wx.RIGHT | wx.LEFT, 5)
 
@@ -33,10 +37,12 @@ class main(wx.Frame):
 
         fgSizer1.Add(bSizer3, 1, wx.EXPAND, 5)
 
+        # 用户输入框
         self.input_text = wx.TextCtrl(self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size(500, 100),
                                       wx.TE_PROCESS_ENTER | wx.TE_MULTILINE)
         fgSizer1.Add(self.input_text, 0, wx.ALL, 5)
 
+        # ’发送‘按钮
         self.m_button3 = wx.Button(self, wx.ID_ANY, u"发送", wx.DefaultPosition, wx.Size(50, 100), 0)
         fgSizer1.Add(self.m_button3, 0, wx.ALL, 5)
 
@@ -45,9 +51,11 @@ class main(wx.Frame):
 
         self.Centre(wx.BOTH)
 
-        # Connect Events
+        # 将关闭窗口与close_win绑定
         self.Bind(wx.EVT_CLOSE, self.close_win)
+        # 将发送按钮与Text_send绑定
         self.m_button3.Bind(wx.EVT_BUTTON, self.Text_send)
+        # 将回车键与Text_send绑定
         self.input_text.Bind(wx.EVT_TEXT_ENTER, self.Text_send)
 
     def __del__(self):
@@ -67,6 +75,8 @@ class main(wx.Frame):
 class login(wx.Frame):
 
     def __init__(self, parent):
+
+        # 创建main窗口，设置相关参数
         wx.Frame.__init__(self, parent, id=wx.ID_ANY, title=u"登录界面", pos=wx.DefaultPosition, size=wx.Size(400, 200),
                           style=wx.DEFAULT_FRAME_STYLE | wx.TAB_TRAVERSAL)
         self.SetWindowStyle(self.GetWindowStyle() & ~wx.RESIZE_BORDER)
@@ -77,6 +87,7 @@ class login(wx.Frame):
 
         gSizer4 = wx.GridSizer(0, 1, 0, 0)
 
+        # 显示‘登录’字样
         self.m_staticText5 = wx.StaticText(self, wx.ID_ANY, u"登录", wx.DefaultPosition, wx.DefaultSize, 0)
         self.m_staticText5.Wrap(-1)
         self.m_staticText5.SetFont(wx.Font(14, 74, 90, 92, False, "微软雅黑"))
@@ -87,6 +98,7 @@ class login(wx.Frame):
 
         gSizer6 = wx.GridSizer(0, 3, 0, 0)
 
+        # 用户名输入框
         self.m_staticText6 = wx.StaticText(self, wx.ID_ANY, u"用户名:", wx.DefaultPosition, wx.DefaultSize, 0)
         self.m_staticText6.Wrap(-1)
         gSizer6.Add(self.m_staticText6, 0, wx.ALL | wx.ALIGN_CENTER_VERTICAL | wx.ALIGN_RIGHT, 5)
@@ -95,6 +107,7 @@ class login(wx.Frame):
                                        wx.TE_PROCESS_ENTER)
         gSizer6.Add(self.m_textCtrl8, 0, wx.ALL | wx.ALIGN_CENTER_VERTICAL, 5)
 
+        # ‘用户名重复’提示
         self.m_staticText5 = wx.StaticText(self, wx.ID_ANY, u"用户名\n重复", wx.DefaultPosition, wx.DefaultSize,
                                            wx.ALIGN_CENTRE)
         self.m_staticText5.Wrap(-1)
@@ -109,6 +122,7 @@ class login(wx.Frame):
 
         gSizer8 = wx.GridSizer(0, 1, 0, 0)
 
+        # ‘登录’按钮
         self.m_button13 = wx.Button(self, wx.ID_ANY, u"登录", wx.DefaultPosition, wx.DefaultSize, 0)
         gSizer8.Add(self.m_button13, 0, wx.ALL | wx.ALIGN_CENTER_HORIZONTAL, 5)
 
@@ -119,9 +133,11 @@ class login(wx.Frame):
 
         self.Centre(wx.BOTH)
 
-        # Connect Events
+        # 将窗口关闭与close绑定
         self.Bind(wx.EVT_CLOSE, self.close)
+        # 将登录按钮与log_check绑定
         self.m_button13.Bind(wx.EVT_BUTTON, self.log_check)
+        # 将回车与log_check绑定
         self.m_textCtrl8.Bind(wx.EVT_TEXT_ENTER, self.log_check)
 
     def __del__(self):
