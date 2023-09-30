@@ -11,7 +11,7 @@ class main(wx.Frame):
     def __init__(self, parent):
         wx.Frame.__init__(self, parent, id=wx.ID_ANY, title=u"聊天界面", pos=wx.DefaultPosition, size=wx.Size(685, 570),
                           style=wx.DEFAULT_FRAME_STYLE | wx.TAB_TRAVERSAL)
-
+        self.SetWindowStyle(self.GetWindowStyle() & ~wx.RESIZE_BORDER)
         self.SetSizeHintsSz(wx.DefaultSize, wx.DefaultSize)
 
         fgSizer1 = wx.FlexGridSizer(2, 2, 0, 0)
@@ -69,7 +69,7 @@ class login(wx.Frame):
     def __init__(self, parent):
         wx.Frame.__init__(self, parent, id=wx.ID_ANY, title=u"登录界面", pos=wx.DefaultPosition, size=wx.Size(400, 200),
                           style=wx.DEFAULT_FRAME_STYLE | wx.TAB_TRAVERSAL)
-
+        self.SetWindowStyle(self.GetWindowStyle() & ~wx.RESIZE_BORDER)
         self.SetSizeHintsSz(wx.DefaultSize, wx.DefaultSize)
         self.SetBackgroundColour(wx.SystemSettings.GetColour(wx.SYS_COLOUR_INACTIVEBORDER))
 
